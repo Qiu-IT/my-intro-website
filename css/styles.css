@@ -3,7 +3,7 @@ body {background: #ececec;}
 h1, h2, h3, h4, h5 {
   border-bottom: 1px solid #ccc;
   color: #3F51B5;
-  padding-bottom: 8px
+  padding-bottom: 16px
 }
 .container {
   margin: auto;
@@ -14,4 +14,10 @@ h1, h2, h3, h4, h5 {
 
 img {
   width: 100%;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    width: 90%; /* 如果屏幕尺寸小于1300px，容器宽度为90% */
+  }
 }
