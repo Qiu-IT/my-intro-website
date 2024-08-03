@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5 {
 .listFlex {display: flex; justify-content: left;}
 
 .listFlex ul {
-  font-size: 1.2em; /* 或者可以设置为具体数值，如20px */
+  font-size: 20px; /* 或者可以设置为具体数值，如20px */
 }
 
 img {
