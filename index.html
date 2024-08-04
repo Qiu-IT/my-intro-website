@@ -33,9 +33,28 @@
     <h4>访问次数</h4>
     <p id="visit-count">加载中...</p>
 
+
+  // 测试位置
+    <h1>Page View Count: <span id="count">Loading...</span></h1>
+
+    <script>
+        function updateCount() {
+            fetch('https://[YOUR_REPLIT_PROJECT_NAME].[YOUR_REPLIT_USERNAME].repl.co/api.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('count').textContent = data.count;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('count').textContent = 'Error loading count';
+                });
+        }
+
+        window.onload = updateCount;
+    </script> 
     <script>
       // 使用AJAX调用PHP脚本获取访问次数
-  console.log("Test");
+  /*console.log("Test");
   fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/api.php').then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -54,7 +73,7 @@
   .catch(error => {
     console.error('Fetch error:', error);
   });
-
+*/
   
  /* fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
     .then(response => response.json())
