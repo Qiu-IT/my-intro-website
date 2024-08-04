@@ -39,6 +39,7 @@
     .then(response => response.json())
     .then(data => {
       document.getElementById('visit-count').textContent = '已有 ' + data.visits + ' 次访问';
+      console.log(data);
   })
     .catch(error => {
       console.error('请求API时出错:', error);
