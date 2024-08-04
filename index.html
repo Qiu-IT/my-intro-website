@@ -38,18 +38,22 @@
   fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
   .then(response => {
     if (!response.ok) {
-      throw new Error('网络响应不正确');
+      throw new Error('Network response was not ok');
     }
-    return response.json();
+    return response.json();  // 尝试解析JSON
   })
   .then(data => {
     console.log(data);
   })
   .catch(error => {
-    console.error('请求API时出错:', error);
+    console.error('There has been a problem with your fetch operation:', error);
+    response.text().then(text => {  // 尝试解析HTML或其他非JSON内容
+      console.log('Response text:', text);
+    });
   });
+
   
-  fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
+ /* fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
     .then(response => response.json())
     .then(data => {
       document.getElementById('visit-count').textContent = '已有 ' + data.visits + ' 次访问';
@@ -57,7 +61,7 @@
   })
     .catch(error => {
       console.error('请求API时出错:', error);
-  });
+  }); */
     </script>
 </div>  
   
