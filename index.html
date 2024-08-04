@@ -35,20 +35,14 @@
 
     <script>
       // 使用AJAX调用PHP脚本获取访问次数
-      function fetchVisitCount() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "counter.php", true);
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            // 将获取的访问次数显示在页面上
-            document.getElementById('visit-count').textContent = '已有 ' + xhr.responseText + ' 次访问';
-          }
-        };
-        xhr.send();
-      }
-
-      // 页面加载完毕后获取访问次数
-      window.onload = fetchVisitCount;
+  fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('visit-count').textContent = '已有 ' + data.visits + ' 次访问';
+  })
+    .catch(error => {
+      console.error('请求API时出错:', error);
+  });
     </script>
 </div>  
   
