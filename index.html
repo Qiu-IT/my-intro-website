@@ -36,6 +36,20 @@
     <script>
       // 使用AJAX调用PHP脚本获取访问次数
   fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('网络响应不正确');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('请求API时出错:', error);
+  });
+  
+  fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/run.php')
     .then(response => response.json())
     .then(data => {
       document.getElementById('visit-count').textContent = '已有 ' + data.visits + ' 次访问';
