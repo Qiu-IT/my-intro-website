@@ -36,21 +36,23 @@
     <script>
       // 使用AJAX调用PHP脚本获取访问次数
   console.log("Test");
-  fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/api.php')
-  .then(response => {
+  fetch('https://52bb019a-658a-4377-9252-53674c276901-00-cgju8do91faz.riker.replit.dev/api.php').then(response => {
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return response.json();  // 尝试解析JSON
+    return response.text(); // 先以文本形式获取响应
   })
-  .then(data => {
-    console.log(data);
+  .then(text => {
+    try {
+      const data = JSON.parse(text); // 尝试解析JSON
+      console.log(data);
+    } catch (err) {
+      console.error('Failed to parse JSON:', err);
+      console.log('Response text was:', text); // 打印原始响应文本
+    }
   })
   .catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-    response.text().then(text => {  // 尝试解析HTML或其他非JSON内容
-      console.log('Response text:', text);
-    });
+    console.error('Fetch error:', error);
   });
 
   
