@@ -28,6 +28,28 @@
   </div>
       <h4>Social Media</h4> 
   Catch me on Twitter - // <a href="https://twitter.com/Lucasq">@Lucas</a>
+
+      <!-- 访问次数显示 -->
+    <h4>访问次数</h4>
+    <p id="visit-count">加载中...</p>
+
+    <script>
+      // 使用AJAX调用PHP脚本获取访问次数
+      function fetchVisitCount() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "counter.php", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // 将获取的访问次数显示在页面上
+            document.getElementById('visit-count').textContent = '已有 ' + xhr.responseText + ' 次访问';
+          }
+        };
+        xhr.send();
+      }
+
+      // 页面加载完毕后获取访问次数
+      window.onload = fetchVisitCount;
+    </script>
 </div>  
   
 
